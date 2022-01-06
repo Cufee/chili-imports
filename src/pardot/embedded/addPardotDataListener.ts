@@ -1,5 +1,5 @@
-import { MagicalOptions } from "./types";
-import ParseOptions from "./parseOptions";
+import { MagicalOptions } from "../common/types";
+import ParseOptions from "../common/parseOptions";
 
 function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: MagicalOptions = {} as MagicalOptions) {
   const opts = ParseOptions(options);

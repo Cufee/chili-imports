@@ -1,7 +1,7 @@
-import ParseForm from "./formParse";
-import { DebugLog, GetElement } from "./helpers";
-import { MagicalOptions } from "./types";
-import ParseOptions from "./parseOptions";
+import ParseForm from "../common/formParse";
+import { DebugLog, GetElement } from "../common/helpers";
+import { MagicalOptions } from "../common/types";
+import ParseOptions from "../common/parseOptions";
 
 async function FormSetup(formID: string, subdomain: string, router: string, options: MagicalOptions = {} as MagicalOptions) {
   await addFormEventListenerWithRetry(formID, subdomain, router, options);

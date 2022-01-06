@@ -2,7 +2,9 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    "pardot/magical": "./src/pardot/index.ts",
+    "pardot/embedded/magical": "./src/pardot/embedded/index.ts",
+    "pardot/handler/magical": "./src/pardot/handler/index.ts",
+    "pardot/native/magical": "./src/pardot/native/index.ts",
   },
   module: {
     rules: [
