@@ -20,6 +20,6 @@ module.exports = {
     filename: "[name].js",
   },
   optimization: {
-    usedExports: false,
+    usedExports: true,
   },
 };

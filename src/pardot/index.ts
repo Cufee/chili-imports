@@ -2,8 +2,13 @@ import AddFinalDataListener from "./addPardotDataListener";
 import EmitFormSuccessEvent from "./emitFormSuccess";
 import FormSetup from "./formSetup";
 
-export const Magical = {
+const Magical = {
   PardotFormSetup: FormSetup,
   PardotFormComplete: EmitFormSuccessEvent,
   PardotFormRegisterSubmit: AddFinalDataListener,
 };
+
+// @ts-ignore
+window["Magical"] = Magical;
+
+export default Magical;
