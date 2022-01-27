@@ -5,6 +5,7 @@ module.exports = {
     "pardot/embedded/magical": "./src/pardot/embedded/index.ts",
     "pardot/handler/magical": "./src/pardot/handler/index.ts",
     "pardot/native/magical": "./src/pardot/native/index.ts",
+    "hubspot/magical": "./src/hubspot/index.ts",
   },
   module: {
     rules: [

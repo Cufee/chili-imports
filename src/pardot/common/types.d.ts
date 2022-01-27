@@ -1,4 +1,4 @@
-export interface MagicalOptions {
+export interface PardotMagicalOptions {
   maxRetries: number;
   domainKey: string;
   routerKey: string;

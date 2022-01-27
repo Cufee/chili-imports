@@ -1,4 +1,5 @@
-import { ParsePardotClassNames, DebugLog, FixFieldName } from "./helpers";
+import DebugLog from "../../common/debugLog";
+import { ParsePardotClassNames, FixFieldName } from "./helpers";
 
 // Makes a dictionary of form label elements
 export function MakeFormLabelDisctionary(form: HTMLFormElement): { [key: string]: string } {

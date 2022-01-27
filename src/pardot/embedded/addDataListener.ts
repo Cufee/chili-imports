@@ -1,11 +1,15 @@
-import { MagicalOptions } from "../common/types";
-import ParseOptions from "../common/parseOptions";
+import { PardotMagicalOptions } from "../common/types";
+import ParsePardotOptions from "../common/parseOptions";
 
-function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: MagicalOptions = {} as MagicalOptions) {
-  const opts = ParseOptions(options);
+function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: PardotMagicalOptions = {} as PardotMagicalOptions) {
+  const opts = ParsePardotOptions(options);
 
   if (!ChiliPiperFunction) {
     console.error("ChiliPiperFunction must be set");
+    return;
+  }
+  if (!opts.domainKey || !opts.routerKey) {
+    console.error("domainKey and routerKey must be set");
     return;
   }
 

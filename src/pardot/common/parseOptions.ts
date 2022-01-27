@@ -1,21 +1,16 @@
-import { MagicalOptions } from "./types";
+import { PardotMagicalOptions } from "./types";
+import ParseOptions from "../../common/parseOptions";
+import { defaultDomainKey, defaultRouterKey } from "../../common/constants";
 
-const domainKey = "CPTenantDomain";
-const routerKey = "CPTenantRouter";
-
-const defaultOptions: MagicalOptions = {
-  domainKey: domainKey,
-  routerKey: routerKey,
+const defaultOptions: PardotMagicalOptions = {
+  domainKey: defaultDomainKey,
+  routerKey: defaultRouterKey,
   maxRetries: 5,
   debug: true,
 };
 
-function ParseOptions(opts: MagicalOptions): MagicalOptions {
-  const options: MagicalOptions = {
-    ...defaultOptions,
-    ...opts,
-  };
-  return options;
+function ParsePardotOptions(opts: PardotMagicalOptions): PardotMagicalOptions {
+  return ParseOptions(defaultOptions, opts) as PardotMagicalOptions;
 }
 
-export default ParseOptions;
+export default ParsePardotOptions;

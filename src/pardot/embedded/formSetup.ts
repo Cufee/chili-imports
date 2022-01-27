@@ -1,14 +1,15 @@
 import ParseForm from "../common/formParse";
-import { DebugLog, GetElement } from "../common/helpers";
-import { MagicalOptions } from "../common/types";
-import ParseOptions from "../common/parseOptions";
+import { GetElement } from "../common/helpers";
+import { PardotMagicalOptions } from "../common/types";
+import ParsePardotOptions from "../common/parseOptions";
+import DebugLog from "../../common/debugLog";
 
-async function FormSetup(formID: string, subdomain: string, router: string, options: MagicalOptions = {} as MagicalOptions) {
+async function FormSetup(formID: string, subdomain: string, router: string, options: PardotMagicalOptions = {} as PardotMagicalOptions) {
   await addFormEventListenerWithRetry(formID, subdomain, router, options);
 }
 
-async function addFormEventListenerWithRetry(formID: string, subdomain: string, router: string, options: MagicalOptions = {} as MagicalOptions, tries = 0) {
-  const opts = ParseOptions(options);
+async function addFormEventListenerWithRetry(formID: string, subdomain: string, router: string, options: PardotMagicalOptions = {} as PardotMagicalOptions, tries = 0) {
+  const opts = ParsePardotOptions(options);
 
   if (tries > opts.maxRetries) {
     DebugLog(opts.debug, `Max retries reached, giving up.`);
@@ -32,7 +33,7 @@ async function addFormEventListenerWithRetry(formID: string, subdomain: string, 
 }
 
 // Get element by selector with retry
-function addFormEventListener(form: HTMLFormElement, subdomain: string, router: string, options: MagicalOptions): boolean {
+function addFormEventListener(form: HTMLFormElement, subdomain: string, router: string, options: PardotMagicalOptions): boolean {
   if (!form) return false;
   if (!subdomain || !router) {
     console.error("Subdomain and router must be set");

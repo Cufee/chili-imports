@@ -28,12 +28,6 @@ export function FixFieldName(fieldName: string): string {
   return ToCamelCase(StripText(fieldName));
 }
 
-export function DebugLog(debug: boolean, message: string) {
-  if (debug) {
-    console.debug(message);
-  }
-}
-
 export function GetElement(selector: string): HTMLElement {
   let element: HTMLElement;
   element = document.querySelector(selector);
