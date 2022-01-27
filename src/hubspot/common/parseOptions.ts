@@ -1,10 +1,10 @@
 import { HubspotMagicalOptions } from "./types";
 import ParseOptions from "../../common/parseOptions";
-import { defaultDomainKey, defaultRouterKey } from "../../common/constants";
 
 const defaultOptions: HubspotMagicalOptions = {
   domain: "",
   router: "",
+  requiredField: "email",
   formId: undefined, // Will run on all forms
   debug: true,
 };

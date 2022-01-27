@@ -1,6 +1,7 @@
 import ParseHubspotOptions from "./common/parseOptions";
 import { HubspotMagicalOptions } from "./common/types";
 import CheckFormID from "./common/checkFormId";
+import DebugLog from "../common/debugLog";
 
 async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: HubspotMagicalOptions = {} as HubspotMagicalOptions) {
   const opts = ParseHubspotOptions(options);
@@ -15,11 +16,17 @@ async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, 
   }
 
   // Parse query params
+  let valid = false;
   const urlParams = new URLSearchParams(window.location.search);
   const data: Record<string, any> = {};
   urlParams.forEach((value: string, key: string) => {
+    if (key.toLowerCase().includes(opts.requiredField)) valid = true;
     data[key] = value;
   });
+  if (!valid) {
+    DebugLog(opts.debug, `Query params do not include required field ${opts.requiredField}`);
+    return;
+  }
 
   if (!CheckFormID(opts.formId, data.formId, opts.debug)) return;
 
