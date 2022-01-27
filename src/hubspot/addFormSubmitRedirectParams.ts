@@ -1,10 +1,9 @@
 import DebugLog from "../common/debugLog";
 import { AddFormSubmissionCallback } from "./addFormSubmissionCallback";
 
-async function AddFormSubmitRedirectParams(debug = true): Promise<void> {
+async function AddFormSubmitRedirectParams(redirectUrl: string, debug = true): Promise<void> {
   AddFormSubmissionCallback(async (data: Record<string, any>, context: Record<string, any>) => {
     const formId = context.formId;
-    const redirectUrl = context.redirectUrl;
     DebugLog(debug, `Form ID ${formId} submitted`);
     DebugLog(debug, `Redirecting to ${redirectUrl}`);
 
