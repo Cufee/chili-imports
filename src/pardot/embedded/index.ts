@@ -2,8 +2,13 @@ import AddFinalDataListener from "./addDataListener";
 import EmitFormSuccessEvent from "./emitFormSuccess";
 import FormSetup from "./formSetup";
 
-// @ts-ignore
-const magical = window["Magical"] || {};
+declare global {
+  interface Window {
+    Magical: Record<string, any>;
+  }
+}
+
+const magical = window.Magical || {};
 
 const pardotMagical = {
   PardotFormSetup: FormSetup,
@@ -12,4 +17,4 @@ const pardotMagical = {
 };
 
 // @ts-ignore
-window["Magical"] = { ...magical, ...pardotMagical };
+window.Magical = { ...magical, ...pardotMagical };

@@ -1,8 +1,14 @@
 import AddFormSubmitListener from "./addFormSubmitListener";
 import AddQueryParamsSubmitHandler from "./addQueryParamsSubmitHandler";
 import AddFormSubmitRedirectParams from "./addFormSubmitRedirectParams";
-// @ts-ignore
-const magical = window["Magical"] || {};
+
+declare global {
+  interface Window {
+    Magical: Record<string, any>;
+  }
+}
+
+const magical = window.Magical || {};
 
 const hubspotMagical = {
   HubspotFormRegisterSubmit: AddFormSubmitListener,
@@ -10,5 +16,4 @@ const hubspotMagical = {
   HubspotCatchSubmitDataRedirect: AddQueryParamsSubmitHandler,
 };
 
-// @ts-ignore
-window["Magical"] = { ...magical, ...hubspotMagical };
+window.Magical = { ...magical, ...hubspotMagical };
