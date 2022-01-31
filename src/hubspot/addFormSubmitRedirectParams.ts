@@ -10,6 +10,7 @@ async function AddFormSubmitRedirectParams(redirectUrl: string, debug = true): P
 
     const params = new URLSearchParams(data);
     params.append("formId", formId);
+    console.log("test");
 
     if (redirectUrl) {
       DebugLog(debug, `Redirecting to ${redirectUrl} with params ${params.toString()}`);
