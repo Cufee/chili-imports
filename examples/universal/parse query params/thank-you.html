@@ -1,5 +1,8 @@
 <script src="https://cufee.github.io/chili-imports/js/universal/magical.js" type="text/javascript"></script>
 <script>
-  const lead = Magical.ParseQueryParams({ requiredQueryField: "email" });
+  const lead = Magical.ParseQueryParams({ requiredQueryField: "email" }); // return null if validatiod based on requiredQueryField fails
   console.log(lead);
+  if (lead) {
+    // run some code...
+  }
 </script>
