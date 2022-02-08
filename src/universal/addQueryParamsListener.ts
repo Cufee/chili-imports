@@ -1,10 +1,13 @@
-import ParseHubspotOptions from "./core/parseOptions";
-import { HubspotMagicalOptions } from "./core/types/HubSpotMagicalOptions";
-import CheckFormID from "./core/checkFormId";
+import ParseOptions from "../core/parseOptions";
 import ParseQueryParams from "../core/parseQueryParams";
+import MagicalOptions from "../core/types/MagicalOptions";
 
-async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: HubspotMagicalOptions = {} as HubspotMagicalOptions) {
-  const opts = ParseHubspotOptions(options);
+const defaultOpts: MagicalOptions = {
+  debug: true,
+} as MagicalOptions;
+
+async function AddQueryParamsListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: MagicalOptions = {} as MagicalOptions) {
+  const opts = ParseOptions(defaultOpts, options);
 
   if (!ChiliPiperFunction) {
     console.error("ChiliPiperFunction must be set");
@@ -18,8 +21,6 @@ async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, 
   const data = ParseQueryParams(opts);
   if (!data) return;
 
-  if (!CheckFormID(opts.formId, data.formId, opts.debug)) return;
-
   // Check custom conditional logic
   if (typeof opts.withCondition === "function" && !opts.withCondition(data)) {
     return;
@@ -31,4 +32,4 @@ async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, 
   });
 }
 
-export default AddQueryParamsSubmitHandler;
+export default AddQueryParamsListener;
