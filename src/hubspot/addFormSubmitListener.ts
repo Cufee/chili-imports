@@ -1,8 +1,8 @@
-import DebugLog from "../common/debugLog";
+import DebugLog from "../core/debugLog";
 import { AddFormSubmissionCallback } from "./addFormSubmissionCallback";
-import ParseHubspotOptions from "./common/parseOptions";
-import { HubspotMagicalOptions } from "./common/types";
-import CheckFormID from "./common/checkFormId";
+import ParseHubspotOptions from "./core/parseOptions";
+import { HubspotMagicalOptions } from "./core/types/HubSpotMagicalOptions";
+import CheckFormID from "./core/checkFormId";
 
 async function AddFormSubmitListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: HubspotMagicalOptions = {} as HubspotMagicalOptions) {
   const opts = ParseHubspotOptions(options);
@@ -20,7 +20,13 @@ async function AddFormSubmitListener(ChiliPiperFunction: (domain: string, router
   AddFormSubmissionCallback(async (data: Record<string, any>) => {
     if (!CheckFormID(opts.formId, data.id, opts.debug)) return;
 
+    // Check custom conditional logic
+    if (typeof opts.withCondition === "function" && !opts.withCondition(data)) {
+      return;
+    }
+
     ChiliPiperFunction(opts.domain, opts.router, {
+      ...(opts.passthroughOptions || {}),
       lead: data,
       map: true,
     });

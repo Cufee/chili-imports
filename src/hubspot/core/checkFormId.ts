@@ -1,4 +1,4 @@
-import DebugLog from "../../common/debugLog";
+import DebugLog from "../../core/debugLog";
 
 function CheckFormID(expectedFormId: any, formId: string, debug = true): boolean {
   switch (expectedFormId) {

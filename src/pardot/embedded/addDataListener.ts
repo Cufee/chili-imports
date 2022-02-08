@@ -1,5 +1,5 @@
-import { PardotMagicalOptions } from "../common/types";
-import ParsePardotOptions from "../common/parseOptions";
+import PardotMagicalOptions from "../core/types/PardotMagicalOptions";
+import ParsePardotOptions from "../core/parseOptions";
 
 function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: PardotMagicalOptions = {} as PardotMagicalOptions) {
   const opts = ParsePardotOptions(options);
@@ -34,8 +34,14 @@ function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: strin
       // @ts-ignore
       const leadObj = window["ChiliPiperLead"];
 
+      // Check custom conditional logic
+      if (typeof opts.withCondition === "function" && !opts.withCondition(leadObj)) {
+        return;
+      }
+
       // Account domain and router name are from Step #1 - no need to change it here
       ChiliPiperFunction(leadObj[opts.domainKey], leadObj[opts.routerKey], {
+        ...(opts.passthroughOptions || {}),
         map: true,
         lead: leadObj,
       });

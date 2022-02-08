@@ -1,8 +1,8 @@
-import ParseForm from "../common/formParse";
-import { GetElement } from "../common/helpers";
-import { PardotMagicalOptions } from "../common/types";
-import ParsePardotOptions from "../common/parseOptions";
-import DebugLog from "../../common/debugLog";
+import PardotMagicalOptions from "../core/types/PardotMagicalOptions";
+import { GetElement } from "../core/helpers";
+import ParsePardotOptions from "../core/parseOptions";
+import ParseForm from "../core/formParse";
+import DebugLog from "../../core/debugLog";
 
 async function FormSetup(formID: string, subdomain: string, router: string, options: PardotMagicalOptions = {} as PardotMagicalOptions) {
   await addFormEventListenerWithRetry(formID, subdomain, router, options);

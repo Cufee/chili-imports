@@ -11,7 +11,8 @@ declare global {
 const magical = window.Magical || {};
 
 const hubspotMagical = {
-  HubspotFormRegisterSubmit: AddFormSubmitListener,
+  HubspotFormRegisterSubmit: AddFormSubmitListener, // Legacy
+  HubspotRunOnSubmit: AddFormSubmitListener,
   HubspotSetupDataRedirect: AddFormSubmitRedirectParams,
   HubspotCatchSubmitDataRedirect: AddQueryParamsSubmitHandler,
 };
