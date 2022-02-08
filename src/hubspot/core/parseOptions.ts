@@ -1,5 +1,5 @@
-import { HubspotMagicalOptions } from "./types";
-import ParseOptions from "../../common/parseOptions";
+import { HubspotMagicalOptions } from "./types/HubSpotMagicalOptions";
+import ParseOptions from "../../core/parseOptions";
 
 const defaultOptions: HubspotMagicalOptions = {
   domain: "",

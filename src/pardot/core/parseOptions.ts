@@ -1,6 +1,6 @@
-import { PardotMagicalOptions } from "./types";
-import ParseOptions from "../../common/parseOptions";
-import { defaultDomainKey, defaultRouterKey } from "../../common/constants";
+import ParseOptions from "../../core/parseOptions";
+import PardotMagicalOptions from "./types/PardotMagicalOptions";
+import { defaultDomainKey, defaultRouterKey } from "../../core/constants";
 
 const defaultOptions: PardotMagicalOptions = {
   domainKey: defaultDomainKey,

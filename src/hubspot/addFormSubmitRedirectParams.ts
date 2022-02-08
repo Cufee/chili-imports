@@ -1,5 +1,5 @@
 import { AddFormSubmissionCallback } from "./addFormSubmissionCallback";
-import DebugLog from "../common/debugLog";
+import DebugLog from "../core/debugLog";
 
 async function AddFormSubmitRedirectParams(redirectUrl: string, debug = true): Promise<void> {
   AddFormSubmissionCallback((data: Record<string, any>, context: Record<string, any>) => {

@@ -1,4 +1,4 @@
-import DebugLog from "../../common/debugLog";
+import DebugLog from "../../core/debugLog";
 import { ParsePardotClassNames, FixFieldName } from "./helpers";
 
 // Makes a dictionary of form label elements
