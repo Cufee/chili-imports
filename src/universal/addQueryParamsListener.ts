@@ -14,7 +14,7 @@ async function AddQueryParamsListener(ChiliPiperFunction: (domain: string, route
     return;
   }
   if (!opts.domain || !opts.router) {
-    console.error("domainKey and routerKey must be set");
+    console.error("domain and router must be set");
     return;
   }
 
