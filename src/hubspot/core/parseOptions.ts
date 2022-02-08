@@ -2,12 +2,9 @@ import { HubspotMagicalOptions } from "./types/HubSpotMagicalOptions";
 import ParseOptions from "../../core/parseOptions";
 
 const defaultOptions: HubspotMagicalOptions = {
-  domain: "",
-  router: "",
-  requiredField: "email",
-  formId: undefined, // Will run on all forms
+  requiredQueryField: "email",
   debug: true,
-};
+} as HubspotMagicalOptions;
 
 function ParseHubspotOptions(opts: HubspotMagicalOptions): HubspotMagicalOptions {
   return ParseOptions(defaultOptions, opts) as HubspotMagicalOptions;

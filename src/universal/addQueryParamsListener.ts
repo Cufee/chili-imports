@@ -7,7 +7,7 @@ const defaultOpts: MagicalOptions = {
 } as MagicalOptions;
 
 async function AddQueryParamsListener(ChiliPiperFunction: (domain: string, router: string, opts: any) => void, options: MagicalOptions = {} as MagicalOptions) {
-  const opts = ParseOptions(defaultOpts, options);
+  const opts = ParseOptions(defaultOpts, options) as MagicalOptions;
 
   if (!ChiliPiperFunction) {
     console.error("ChiliPiperFunction must be set");
@@ -27,6 +27,7 @@ async function AddQueryParamsListener(ChiliPiperFunction: (domain: string, route
   }
 
   ChiliPiperFunction(opts.domain, opts.router, {
+    ...(opts.passthroughOptions || {}),
     lead: data,
     map: true,
   });

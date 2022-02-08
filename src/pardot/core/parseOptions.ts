@@ -7,7 +7,7 @@ const defaultOptions: PardotMagicalOptions = {
   routerKey: defaultRouterKey,
   maxRetries: 5,
   debug: true,
-};
+} as PardotMagicalOptions;
 
 function ParsePardotOptions(opts: PardotMagicalOptions): PardotMagicalOptions {
   return ParseOptions(defaultOptions, opts) as PardotMagicalOptions;

@@ -26,6 +26,7 @@ async function AddQueryParamsSubmitHandler(ChiliPiperFunction: (domain: string, 
   }
 
   ChiliPiperFunction(opts.domain, opts.router, {
+    ...(opts.passthroughOptions || {}),
     lead: data,
     map: true,
   });

@@ -41,6 +41,7 @@ function AddFinalDataListener(ChiliPiperFunction: (domain: string, router: strin
 
       // Account domain and router name are from Step #1 - no need to change it here
       ChiliPiperFunction(leadObj[opts.domainKey], leadObj[opts.routerKey], {
+        ...(opts.passthroughOptions || {}),
         map: true,
         lead: leadObj,
       });

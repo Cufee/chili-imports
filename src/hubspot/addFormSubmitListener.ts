@@ -26,6 +26,7 @@ async function AddFormSubmitListener(ChiliPiperFunction: (domain: string, router
     }
 
     ChiliPiperFunction(opts.domain, opts.router, {
+      ...(opts.passthroughOptions || {}),
       lead: data,
       map: true,
     });
