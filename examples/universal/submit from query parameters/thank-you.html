@@ -1,0 +1,10 @@
+<script src="https://cufee.github.io/chili-imports/js/universal/magical.js" type="text/javascript"></script>
+<script src="https://js.chilipiper.com/marketing.js" type="text/javascript"></script>
+<script>
+  const conditionFail = (lead) => {
+    console.log(lead);
+    console.log("failing condition");
+    return false; // return true to pass condition and submit data
+  };
+  Magical.RegisterUniversalQuerySubmit(ChiliPiper.submit, { domain: "vandenberghe", router: "hubspot", withCondition: conditionFail });
+</script>
